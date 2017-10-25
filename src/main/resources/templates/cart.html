@@ -1,0 +1,88 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
+
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+<script src="/webstore/resource/js/controllers.js"></script>
+
+<title>Koszyk</title>
+</head>
+
+	<div class="container">
+		<div class="navbar navbar-inverse">
+			 <div class="container-fluid">
+				 <div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+					 </button>
+					 <a class="navbar-brand" href="#">SitePoint</a>
+				 </div>
+				 <div class="collapse navbar-collapse" id="mynavbar-content">
+				 	<ul class="nav navbar-nav">
+						 <li class="active"><a th:href="@{/products/add}">Dodaj produkt</a></li>
+					</ul>
+					<div sec:authorize="isAnonymous()">
+						 <ul class="nav navbar-nav navbar-right">
+							 <li><a th:href="@{/register}">Zarejestruj się</a></li>
+							 <li><a th:href="@{/login}">Zaloguj się</a></li>
+						 </ul>
+						 
+					 </div>
+					 <div sec:authorize="isAuthenticated()"> 
+						 <ul class="nav navbar-nav navbar-right">
+							 <li><a th:href="@{/cart}">Koszyk</a></li>
+							 <li><a th:href="@{/logmeout}">Logout</a></li>
+						 </ul>
+					 </div>
+				 </div>
+			</div>
+		</div>
+	</div>
+
+	<section class="container" >
+		<div>
+
+			<div>
+				<a class="btn btn-danger pull-left"> <span
+					class="glyphicon glyphicon-remove-sign"></span> Wyczyść koszyk
+				</a> <a href="${cartId}" class="btn btn-success pull-right"> <span
+					class="glyphicon-shopping-cart glyphicon"></span> Kupuję
+				</a>
+			</div>
+			<table class="table table-hover">
+				<tr>
+					<th>Produkt</th>
+                    <th>Cena za sztukę</th>
+                    <th>Liczba sztuk</th>
+                    <th>Cena</th>
+                    <th>Akcja</th>
+				</tr>
+				<tr th:each="product : products">
+ 					<td th:text="${product.product.name}"></td>
+					<td th:text="${product.product.unitPrice}"></td>
+					<td th:text="${product.quantity}"></td> 
+ 					<td th:text="${product.id}"></td>
+					<td><a href="#" class="label label-danger" ></a> 
+							
+					</td>
+				</tr>
+				<tr>
+					<th></th>
+					<th></th>
+					<th>Razem</th>
+					<th>{{cart.grandTotal}} PLN</th>
+					<th></th>
+				</tr>
+			</table>
+			
+			<a href="/products" class="btn btn-default">
+						<span class="glyphicon-hand-left glyphicon"></span> Kontynuuj zakupy
+			</a>
+		</div>
+	</section>
+</html>

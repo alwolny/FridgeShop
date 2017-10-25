@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
+<title>Registration form</title>
+</head>
+<body>
+	<div class="container">
+		<div class="navbar navbar-inverse">
+			 <div class="container-fluid">
+				 <div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+					 </button>
+					 <a class="navbar-brand" href="#">SitePoint</a>
+				 </div>
+					 <div class="collapse navbar-collapse" id="mynavbar-content">
+						 <ul class="nav navbar-nav">
+							 <li class="active"><a href="#">Dodaj produkt</a></li>
+
+						 </ul>
+						 
+						 
+						 <ul class="nav navbar-nav navbar-right">
+							 <li><a th:href="@{/register}">Zarejestruj się</a></li>
+							 <li><a th:href="@{/login}">Zaloguj się</a></li>
+						 </ul>
+					 </div>
+				 </div>
+			</div>
+			<div class="container">
+
+		    <h1>Registration form</h1>
+		    <form action="#" method="post" th:action="@{/register}" th:object="${user}">
+		        <input th:field="*{firstName}" placeholder="First Name" /><br />
+		        <input th:field="*{lastName}" placeholder="Last Name" /><br />
+		        <p th:errors="*{email}">Email errors</p>
+		        <input th:field="*{email}" type="email" placeholder="Email" /><br />
+		        <p th:errors="*{password}">Password errors</p>
+		        <input th:field="*{password}" type="password" placeholder="Password" /><br />
+		        <input type="submit" value="Register" />
+		    </form>
+    	</div>
+    	</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
+<title>Registration form</title>
+</head>
+<body>
+	<div class="container">
+				<div class="navbar navbar-inverse">
+			 <div class="container-fluid">
+				 <div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+					 </button>
+					 <a class="navbar-brand" th:href="@{/}">SitePoint</a>
+				 </div>
+				 <div class="collapse navbar-collapse" id="mynavbar-content">
+				 	<ul class="nav navbar-nav">
+						 <li class="active"><a th:href="@{/products/add}">Dodaj produkt</a></li>
+					</ul>
+					<div sec:authorize="isAnonymous()">
+						 <ul class="nav navbar-nav navbar-right">
+							 <li><a th:href="@{/register}">Zarejestruj się</a></li>
+							 <li><a th:href="@{/login}">Zaloguj się</a></li>
+						 </ul>
+					 </div>
+					 <div sec:authorize="isAuthenticated()"> 
+ 						 <ul class="nav navbar-nav navbar-right">
+							 <li><a th:href="@{/cart}">Koszyk</a></li>
+							 <li><a th:href="@{/logmeout}">logout</a></li>
+						 </ul>
+						 
+					 </div>
+				 </div>
+			</div>
+		</div>
+			<div class="container">
+
+		    <h1>Adding a product</h1>
+		    <form  method="post" action="upload" th:action="@{/products/add}" th:object="${product}" enctype="multipart/form-data">
+		        <input th:field="*{name}" placeholder="Name" /><br />
+		        <input th:field="*{unitPrice}" placeholder="Price" /><br />
+		        <input th:field="*{manufacturer}" placeholder="Manufacturer" /><br />
+		        <input th:field="*{description}" placeholder="Description" /><br />
+		        <input th:field="*{category}" placeholder="Category" /><br />
+		        <input th:field="*{unitsInStock}" placeholder="Units in stock" /><br />
+		        <input th:field="*{unitsInOrder}" placeholder="Units in order" /><br />
+		        <input th:field="*{brand}" placeholder="Brand" /><br />
+<!--  		        <input th:field="*{image}" type="file" /><br />
+ --> 		        
+		        <input type="submit" value="Add" />
+		    </form>
+    	</div>
+    	</div>
+</body>
+</html>
