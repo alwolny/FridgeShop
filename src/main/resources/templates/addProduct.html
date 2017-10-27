@@ -46,12 +46,17 @@
 		        <input th:field="*{unitPrice}" placeholder="Price" /><br />
 		        <input th:field="*{manufacturer}" placeholder="Manufacturer" /><br />
 		        <input th:field="*{description}" placeholder="Description" /><br />
-		        <input th:field="*{category}" placeholder="Category" /><br />
 		        <input th:field="*{unitsInStock}" placeholder="Units in stock" /><br />
 		        <input th:field="*{unitsInOrder}" placeholder="Units in order" /><br />
 		        <input th:field="*{brand}" placeholder="Brand" /><br />
-<!--  		        <input th:field="*{image}" type="file" /><br />
- --> 		        
+				<select th:field="*{category}" class="selectpicker" data-style="btn-primary">
+				  <option th:value="fridge">Lodówka</option>
+				  <option th:value="refrigerator">Zamrażarka</option>
+				  <option th:value="coolerbox">Lodówka turystyczna</option>
+				  <option th:value="cabinet">Lady i wytryny chłodnicze</option>
+				  <option th:value="accessory">Akcesoria do lodówek</option>
+				</select>
+ 		        
 		        <input type="submit" value="Add" />
 		    </form>
     	</div>
