@@ -85,7 +85,7 @@ public class ProductController{
     	productService.deleteById(productId);
     	
         model.addAttribute("product", new Product());
-        return "redirect:products";
+        return "redirect:/";
     }
  
     @PostMapping("/add")

@@ -43,6 +43,6 @@ public class ShoppingCartController {
 		sum = cartService.getTotal(user);
 		
 	    model.addAttribute("total", sum);
-		return "prod";
+		return "cart";
 	}
 }
