@@ -68,9 +68,11 @@
 				<h4> <span th:text="${product.unitPrice}"></span> PLN</h4>
 				<p>
 					<span th:if="${product.unitsInStock != 0}">
-						<a th:href="@{'/addToCart?name=' + ${product.name}}" class="btn btn-warning btn-large"> 
-						<span class="glyphicon-shopping-cart glyphicon"></span> Zamów teraz
-						</a> 
+						<span sec:authorize="!hasRole('ROLE_ADMIN')">
+							<a th:href="@{'/addToCart?name=' + ${product.name}}" class="btn btn-warning btn-large"> 
+							<span class="glyphicon-shopping-cart glyphicon"></span> Zamów teraz
+							</a> 
+						</span>
 						
 						<a th:href="@{/products}" class="btn btn-default">
 							<span class="glyphicon-hand-left glyphicon"></span> powrót
