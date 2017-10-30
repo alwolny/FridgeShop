@@ -17,8 +17,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="shopping_carts")
 public class ShoppingCart implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -31,6 +33,12 @@ public class ShoppingCart implements Serializable{
 	@OneToMany(cascade = {CascadeType.ALL})
 	//@JoinColumn(name = "id_cart", referencedColumnName="cart_id")
 	private List<CartItem> items;
+
+
+	@Override
+	public String toString() {
+		return "ShoppingCart [id=" + id + ", items=" + items + "]";
+	}
 
 
 	public ShoppingCart() {

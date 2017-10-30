@@ -1,13 +1,19 @@
 package pl.awolny.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
  
 @Entity
-public class UserRole {
+public class UserRole implements Serializable{
      
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3044252923631059066L;
+	@Id
     @GeneratedValue
     private Long id;
     private String role;
