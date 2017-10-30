@@ -1,6 +1,7 @@
 package pl.awolny.service;
 
 import java.math.BigDecimal;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,6 +24,12 @@ public class ShoppingCartService {
 	
 	@Autowired
 	CartItemRepository itemRepository;
+	
+	@Autowired
+	UserService userService;
+	
+	@Autowired
+	CartItemService itemService;
 	
 	public void addProduct(User user, Product product){
 		long check = checkIfInCart(user, product.getProductId());
@@ -62,5 +69,14 @@ public class ShoppingCartService {
 			}
 	    }
 	    return sum;
+	}
+	
+	public void deleteItemsFromTheCart(User user){
+		List<CartItem> items = user.getCart().getItems();
+	    for (int i = 0; i < items.size(); i++) {
+			CartItem item = items.get(i);
+        	itemService.delete(item.getId());
+        	itemService.save(item);
+	    }			
 	}
 }
