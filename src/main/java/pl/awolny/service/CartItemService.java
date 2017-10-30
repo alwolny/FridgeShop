@@ -30,6 +30,10 @@ public class CartItemService {
 		item.setAmount(amount);
 		prod.setUnitsInStock(unitsInStock);
 		productRepository.save(prod);
+		save(item);
+	}
+	
+	public void save(CartItem item){
 		itemRepository.save(item);
 	}
 }
