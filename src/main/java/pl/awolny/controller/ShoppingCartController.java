@@ -40,7 +40,7 @@ public class ShoppingCartController {
 		User user = userService.getAuthUser();
 		model.addAttribute("items", user.getCart().getItems());
 	    BigDecimal sum = new BigDecimal(0);
-		sum = cartService.getTotal(user);
+		sum = cartService.getTotal();
 		
 	    model.addAttribute("total", sum);
 		return "cart";
