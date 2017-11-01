@@ -26,10 +26,7 @@ public class CartItemService {
 	public void setAmount(long id, int amount){
 		CartItem item = itemRepository.findById(id);
 		Product prod = item.getProduct();
-		long unitsInStock = prod.getUnitsInStock() - amount;
 		item.setAmount(amount);
-		prod.setUnitsInStock(unitsInStock);
-		productRepository.save(prod);
 		save(item);
 	}
 	

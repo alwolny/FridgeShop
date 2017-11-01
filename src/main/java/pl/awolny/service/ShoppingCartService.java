@@ -59,7 +59,8 @@ public class ShoppingCartService {
 		return -1;
 	}
 	
-	public BigDecimal getTotal(User user){
+	public BigDecimal getTotal(){
+		User user = userService.getAuthUser();
 	    List<CartItem> items = user.getCart().getItems();
 	    BigDecimal sum = new BigDecimal(0);
 	    for (int i = 0; i < items.size(); i++) {
@@ -71,7 +72,8 @@ public class ShoppingCartService {
 	    return sum;
 	}
 	
-	public void deleteItemsFromTheCart(User user){
+	public void deleteItemsFromTheCart(){
+		User user = userService.getAuthUser();
 		List<CartItem> items = user.getCart().getItems();
 	    for (CartItem item : items) {
         	itemService.delete(item.getId());
