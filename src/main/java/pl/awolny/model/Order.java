@@ -31,7 +31,7 @@ public class Order implements Serializable{
 	@OneToOne
 	private User user;
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	private List<CartItem> orderItems;
+	private List<OrderItem> orderItems;
     @Version
     @Type(type = "dbtimestamp")
     private Timestamp purchaseTime;
@@ -61,14 +61,14 @@ public class Order implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public List<CartItem> getOrderItems() {
+	public List<OrderItem> getOrderItems() {
 		return orderItems;
 	}
-	public void setOrderItems(List<CartItem> orderItems) {
+	public void setOrderItems(List<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
 
-	public Order(User user, List<CartItem> orderItems, BigDecimal total) {
+	public Order(User user, List<OrderItem> orderItems, BigDecimal total) {
 		this.orderItems = new LinkedList<>();
 		this.user = user;
 		this.orderItems = orderItems;
@@ -128,5 +128,4 @@ public class Order implements Serializable{
 		return "Order [id=" + id + ", user=" + user + ", orderItems=" + orderItems + ", purchaseTime=" + purchaseTime
 				+ ", total=" + total + "]";
 	}
-    
 }
