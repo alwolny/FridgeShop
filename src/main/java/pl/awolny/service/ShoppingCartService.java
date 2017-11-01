@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import pl.awolny.model.CartItem;
+import pl.awolny.model.OrderItem;
 import pl.awolny.model.Product;
 import pl.awolny.model.ShoppingCart;
 import pl.awolny.model.User;
@@ -50,8 +51,7 @@ public class ShoppingCartService {
 	public long checkIfInCart(User user, long id){
 		ShoppingCart cart = user.getCart();
 		List<CartItem> items = cart.getItems();
-		for (int i = 0; i < items.size(); i++) {
-			CartItem item = items.get(i);
+		for (CartItem item : items) {
 			if (item.getProduct().getProductId()==id){
 				return item.getId();
 			}
@@ -73,8 +73,7 @@ public class ShoppingCartService {
 	
 	public void deleteItemsFromTheCart(User user){
 		List<CartItem> items = user.getCart().getItems();
-	    for (int i = 0; i < items.size(); i++) {
-			CartItem item = items.get(i);
+	    for (CartItem item : items) {
         	itemService.delete(item.getId());
         	itemService.save(item);
 	    }			
