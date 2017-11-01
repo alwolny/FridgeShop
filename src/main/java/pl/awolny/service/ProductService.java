@@ -62,10 +62,7 @@ public class ProductService {
 		return productRepository.getImageByProductId(id);
 	}
 
-
-	/*
-	Product getProductByName(String productId);
-	List<Product> getProductByCategory(String category);
-	Set<Product> getProductsByFilter(Map<String, List<String>> filterParams);*/
-
+	public void save(Product product) {
+		productRepository.save(product);
+	}
 }

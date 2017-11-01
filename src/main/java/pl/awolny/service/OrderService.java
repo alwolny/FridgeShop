@@ -39,8 +39,8 @@ public class OrderService {
 		price = cartService.getTotal(user);
 		for (CartItem item : items) {
             if(item.getAmount()!=0){
-            	OrderItem oi = new OrderItem(item.getAmount(), item.getProduct());
-            	orderItems.add(oi);
+            	OrderItem orderItem = new OrderItem(item.getAmount(), item.getProduct());
+            	orderItems.add(orderItem);
             }
         }
    		Order order = new Order(user, orderItems, price);
