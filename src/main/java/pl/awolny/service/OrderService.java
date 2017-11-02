@@ -73,4 +73,13 @@ public class OrderService {
 	public List<Order> getOrders(){
 		return orderRepository.findAll();
 	}
+	
+	public List<Order> getUserOrders(){
+		User user = userService.getAuthUser();
+		return getOrdersByUser(user);
+	}
+	
+	List<Order> getOrdersByUser(User user){
+		return orderRepository.getOrdersByUser(user);
+	}
 }

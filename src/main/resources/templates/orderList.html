@@ -73,26 +73,52 @@
 		</section>
 	
 <div class="container">
-	<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Godzina zakupu</th>
-      <th>Nabywca</th>
-      <th>Suma</th>
-    </tr>
-  </thead>
-  <tbody>
-    <span th:each="order : ${orders}">
-    <tr>
-      <th scope="row" th:text="${order.id}"></th>
-      <td th:text="${order.purchaseTime}"></td>
-      <td th:text="${order.user.email}"></td>
-      <td th:text="${order.total}"></td>
-    </tr>
-    </span>
-  </tbody>
-</table>
+   	<div sec:authorize="hasRole('ROLE_ADMIN')">
+		<table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th>#</th>
+			      <th>Godzina zakupu</th>
+			      <th>Nabywca</th>
+			      <th>Suma</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <span th:each="order : ${orders}">
+			    <tr>
+			      <th scope="row" th:text="${order.id}"></th>
+			      <td th:text="${order.purchaseTime}"></td>
+			      <td th:text="${order.user.email}"></td>
+			      <td th:text="${order.total}"></td>
+			    </tr>
+			    </span>
+			  </tbody>
+		</table>
+	</div>
+	<div sec:authorize="!hasRole('ROLE_ADMIN')">
+		<table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th>#</th>
+			      <th>Godzina zakupu</th>
+			      <th>Ilość produktów</th>
+			      <th>Suma</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <span th:each="order : ${userOrders}">
+			    <tr>
+			      <th scope="row" th:text="${order.id}"></th>
+			      <td th:text="${order.purchaseTime}"></td>
+			      <td th:text="${#lists.size(order.orderItems)}"></td>
+			      <td th:text="${order.total}"></td>
+			    </tr>
+			    </span>
+			  </tbody>
+		</table>
+	</div>
+	
+	
 </div>
 
 </body>

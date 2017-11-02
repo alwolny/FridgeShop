@@ -25,7 +25,9 @@ public class OrderController {
 	@GetMapping("/list/orders")
 	public String showOrders(Model model) {
 	    List<Order> orders = orderService.getOrders();
+	    List<Order> userOrders = orderService.getUserOrders();
         model.addAttribute("orders", orders);
+        model.addAttribute("userOrders", userOrders);
 		return "orderList";
 	}
 }
