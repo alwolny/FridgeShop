@@ -69,4 +69,8 @@ public class OrderService {
    		Order order = new Order(user, orderItems, price);
    		orderRepository.save(order);
 	}
+	
+	public List<Order> getOrders(){
+		return orderRepository.findAll();
+	}
 }
