@@ -83,39 +83,44 @@
 			      <th>Suma</th>
 			    </tr>
 			  </thead>
+			  <span th:each="order : ${orders}">
+			  <a th:href="@{'/anorder?id=' + ${order.id}}">
 			  <tbody>
-			    <span th:each="order : ${orders}">
-			    <tr>
+			    <tr class='clickable-row' data-href='url://some-other-link/'>
 			      <th scope="row" th:text="${order.id}"></th>
 			      <td th:text="${order.purchaseTime}"></td>
 			      <td th:text="${order.user.email}"></td>
 			      <td th:text="${order.total}"></td>
 			    </tr>
-			    </span>
+
 			  </tbody>
+			  </a>
+			  </span>
 		</table>
 	</div>
 	<div sec:authorize="!hasRole('ROLE_ADMIN')">
-		<table class="table table-hover">
-			  <thead>
-			    <tr>
-			      <th>#</th>
-			      <th>Godzina zakupu</th>
-			      <th>Ilość produktów</th>
-			      <th>Suma</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <span th:each="order : ${userOrders}">
-			    <tr>
-			      <th scope="row" th:text="${order.id}"></th>
-			      <td th:text="${order.purchaseTime}"></td>
-			      <td th:text="${#lists.size(order.orderItems)}"></td>
-			      <td th:text="${order.total}"></td>
-			    </tr>
-			    </span>
-			  </tbody>
-		</table>
+		<div class="panel-body">
+			<div class="row" th:each="order : ${orders}">
+				<a th:href="@{'/anorder?id=' + ${order.id}}" style="color:inherit;">
+			
+					<div class="col-xs-1 text-right">
+						<h4 class="product-name"><strong th:text="${order.id}"></strong></h4>
+					</div>
+					<div class="col-xs-2">
+						<h6><strong th:text="${order.user.email}"></strong></h6>
+					</div>
+					<div class="col-xs-2 text-right">
+						<h6><strong th:text="${order.purchaseTime}"></strong></h6>
+					</div>
+					<div class="col-xs-1 text-right">
+						<h6><strong th:text="${#lists.size(order.orderItems)}"></strong></h6>
+					</div>
+					<div class="col-xs-2">
+						<h6><strong th:text="${order.total}"></strong></h6>
+					</div>
+				</a>
+			</div>
+		</div>
 	</div>
 	
 	
