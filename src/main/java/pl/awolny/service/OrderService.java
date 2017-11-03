@@ -82,4 +82,9 @@ public class OrderService {
 	List<Order> getOrdersByUser(User user){
 		return orderRepository.getOrdersByUser(user);
 	}
+
+	public Order getOrderById(long orderId) {
+		System.out.println("getting order by id");
+		return orderRepository.getOrdersById(orderId);
+	}
 }
