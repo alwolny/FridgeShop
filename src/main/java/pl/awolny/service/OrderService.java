@@ -84,7 +84,6 @@ public class OrderService {
 	}
 
 	public Order getOrderById(long orderId) {
-		System.out.println("getting order by id");
 		return orderRepository.getOrdersById(orderId);
 	}
 }

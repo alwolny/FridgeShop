@@ -38,7 +38,6 @@ public class OrderController {
 		System.out.println("order controller getOrderById");
 		model.addAttribute("order", orderService.getOrderById(orderId));
 		model.addAttribute("orderItems", orderService.getOrderById(orderId).getOrderItems());
-		System.out.println("order: " + orderService.getOrderById(orderId));
 		return "order";
 	}
 }
