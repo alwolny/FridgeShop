@@ -47,9 +47,11 @@
 		<div class="row">
 			<div class="col-md-5">
 				<p>
-					<a th:href="@{'/products/delete?id=' + ${product.productId}}" class="btn btn-danger">
-						<span class="glyphicon glyphicon-trash"></span> delete
-					</a>
+					<span sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{'/products/delete?id=' + ${product.productId}}" class="btn btn-danger">
+							<span class="glyphicon glyphicon-trash"></span> delete
+						</a>
+					</span>
 				</p>
 				<h3 th:text="${product.name}"></h3>
 				<p th:text="${product.description}"></p>
