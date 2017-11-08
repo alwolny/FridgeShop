@@ -70,7 +70,7 @@ public class ProductController{
     }
  
     @PostMapping("/add")
-    public String addUser(@ModelAttribute @Valid Product product,
+    public String addProduct(@ModelAttribute @Valid Product product,
             BindingResult bindResult) {
         if(bindResult.hasErrors())
             return "addProduct";
