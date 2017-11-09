@@ -12,6 +12,16 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name="cart_items")
 public class CartItem implements Serializable{
@@ -22,43 +32,10 @@ public class CartItem implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="item_id")
 	private long id;
+	@NonNull
 	private int amount;
 	@ManyToOne(cascade = {CascadeType.ALL})
+	@NonNull
 	private Product product;
 	
-
-	public CartItem(int amount, Product product) {
-		this.amount = amount;
-		this.product = product;
-	}
-	public CartItem() {
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 }

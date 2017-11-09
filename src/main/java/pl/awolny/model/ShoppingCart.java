@@ -19,6 +19,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
 @Entity
 @Table(name="shopping_carts")
 public class ShoppingCart implements Serializable{
@@ -28,41 +36,11 @@ public class ShoppingCart implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="cart_id")
-	private long id;
-	
+	private long id;	
 	@OneToMany(cascade = {CascadeType.ALL})
-	//@JoinColumn(name = "id_cart", referencedColumnName="cart_id")
 	private List<CartItem> items;
-
-
-	@Override
-	public String toString() {
-		return "ShoppingCart [id=" + id + ", items=" + items + "]";
-	}
-
 
 	public ShoppingCart() {
 		this.items = new LinkedList<>();
-	}
-
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public List<CartItem> getItems() {
-		return items;
-	}
-
-	public void setItems(List<CartItem> items) {
-		this.items = items;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 }
