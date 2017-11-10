@@ -35,7 +35,6 @@ public class OrderController {
 	
 	@RequestMapping("/anorder")
 	public String getOrdertById(@RequestParam("id") long orderId, Model model){
-		System.out.println("order controller getOrderById");
 		model.addAttribute("order", orderService.getOrderById(orderId));
 		model.addAttribute("orderItems", orderService.getOrderById(orderId).getOrderItems());
 		return "order";
