@@ -1,72 +1,65 @@
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
-<title>Produkty</title>
-</head>
-<body>
-
-	<div class="container">
-
-       	<div th:include="fragments/header::head"></div>
-
-		<ul class="nav nav-tabs">
-		 <li class="active"><a th:href="@{/products}" data-toggle="tab">Wszystkie produkty</a></li>
-		 <li><a th:href="@{/products/fridge}" data-toggle="tab">Lodówka</a></li>
-		 <li><a th:href="@{/products/refrigerator}" data-toggle="tab">Zamrażarka</a></li>
-		 <li><a th:href="@{/products/cabinet}" data-toggle="tab">Lady i witryny chłodnicze</a></li>
-		 <li><a th:href="@{/products/coolerbox}" data-toggle="tab">Lodówki turystyczne</a></li>
-		 <li><a th:href="@{/products/accessory}" data-toggle="tab">Akcesoria do lodówek</a></li>
-		</ul>
-		
-		<section>
-			<div class="container">
-				<div class="page-header">
-					<h1>Produkty <small>Wszystkie produkty dostępne w naszym sklepie</small></h1>
-				</div>
-			</div>
-		</section>
-	
-		<section class="container">
-			<div class="row">
-				<p th:each="product : ${products}">
-				<span th:if="${!product.discontinued}">
-					<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-						<div class="thumbnail">
-						<span th:if="${product.category == 'fridge'}">
-							<img th:src="@{https://i.ebayimg.com/images/g/0lsAAOSwdrdZbtMp/s-l300.jpg}" />
-						</span>
-						<span th:if="${product.category == 'refrigerator'}">
-							<img th:src="@{http://reviewsera.com/wp-content/uploads/2017/03/Sansui-SC091PSH-Direct-cool-Single-door-Refrigerator-200x300.jpg}" />
-						</span>
-						<span th:if="${product.category == 'cabinet'}">
-							<img th:src="@{https://i.ebayimg.com/images/g/pw8AAOSwe7BWw3G5/s-l300.jpg}" />
-						</span>
-						<span th:if="${product.category == 'coolerbox'}">
-							<img th:src="@{https://images-na.ssl-images-amazon.com/images/I/31gTSDKLreL._SY300_.jpg}" />
-						</span>
-						<span th:if="${product.category == 'accessory'}">
-							<img th:src="@{https://images-eu.ssl-images-amazon.com/images/I/213UPBVQc-L._SY300_QL70_.jpg}" />
-						</span>
-							<div class="caption">
-								<h3><span th:text="${product.name}"></span></h3>
-<!-- 								<p th:text="${product.description}">???</p>
- -->								<p><span th:text="${product.unitPrice}"></span> PLN</p>
-								<p>Liczba sztuk w magazynie: <span th:text="${product.unitsInStock}"></span></p>
-								<p>
-									<a th:href="@{'/products/product?name=' + ${product.name}}" class="btn btn-primary">
-										<span class="glyphicon-info-sign glyphicon"></span> Szczegóły
-									</a>
-								</p>
-							</div>
-						</div>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<link rel="stylesheet"
+			href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
+		<title>Produkty</title>
+	</head>
+	<body>
+		<div class="container">
+	       	<div th:include="fragments/header::head"></div>
+				<ul class="nav nav-tabs">
+				 <li class="active"><a th:href="@{/products}" data-toggle="tab">Wszystkie produkty</a></li>
+				 <li><a th:href="@{/products/fridge}" data-toggle="tab">Lodówka</a></li>
+				 <li><a th:href="@{/products/refrigerator}" data-toggle="tab">Zamrażarka</a></li>
+				 <li><a th:href="@{/products/cabinet}" data-toggle="tab">Lady i witryny chłodnicze</a></li>
+				 <li><a th:href="@{/products/coolerbox}" data-toggle="tab">Lodówki turystyczne</a></li>
+				 <li><a th:href="@{/products/accessory}" data-toggle="tab">Akcesoria do lodówek</a></li>
+				</ul>
+			<section>
+				<div class="container">
+					<div class="page-header">
+						<h1>Produkty <small>Wszystkie produkty dostępne w naszym sklepie</small></h1>
 					</div>
-				</span>
-	    		</p>
-	 		</div>
-		</section>
-	</div>
-
-</body>
+				</div>
+			</section>
+			<section class="container">
+				<div class="row">
+					<p th:each="product : ${products}">
+						<span th:if="${!product.discontinued}">
+							<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+								<div class="thumbnail">
+								<span th:if="${product.category == 'fridge'}">
+									<img th:src="@{https://i.ebayimg.com/images/g/0lsAAOSwdrdZbtMp/s-l300.jpg}" />
+								</span>
+								<span th:if="${product.category == 'refrigerator'}">
+									<img th:src="@{http://reviewsera.com/wp-content/uploads/2017/03/Sansui-SC091PSH-Direct-cool-Single-door-Refrigerator-200x300.jpg}" />
+								</span>
+								<span th:if="${product.category == 'cabinet'}">
+									<img th:src="@{https://i.ebayimg.com/images/g/pw8AAOSwe7BWw3G5/s-l300.jpg}" />
+								</span>
+								<span th:if="${product.category == 'coolerbox'}">
+									<img th:src="@{https://images-na.ssl-images-amazon.com/images/I/31gTSDKLreL._SY300_.jpg}" />
+								</span>
+								<span th:if="${product.category == 'accessory'}">
+									<img th:src="@{https://images-eu.ssl-images-amazon.com/images/I/213UPBVQc-L._SY300_QL70_.jpg}" />
+								</span>
+									<div class="caption">
+										<h3><span th:text="${product.name}"></span></h3>
+										<p><span th:text="${product.unitPrice}"></span> PLN</p>
+										<p>Liczba sztuk w magazynie: <span th:text="${product.unitsInStock}"></span></p>
+										<p>
+											<a th:href="@{'/products/product?name=' + ${product.name}}" class="btn btn-primary">
+												<span class="glyphicon-info-sign glyphicon"></span> Szczegóły
+											</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</span>
+		    		</p>
+		 		</div>
+			</section>
+		</div>
+	</body>
 </html>

@@ -7,48 +7,48 @@
 		<title>Produkt</title>
 	</head>
 	<body>
-	<div class="container">
-       	<div th:include="fragments/header::head"></div>	
-			<div class="container">
-				<div class="row">
-					<div class="col-md-5">
-						<p>
-							<span sec:authorize="hasRole('ROLE_ADMIN')">
-								<a th:href="@{'/products/delete?id=' + ${product.productId}}" class="btn btn-danger">
-									<span class="glyphicon glyphicon-trash"></span> Usuń
-								</a>
-							</span>
-						</p>
-						<h3 th:text="${product.name}"></h3>
-						<p th:text="${product.description}"></p>
-						<p>
-							<strong>Kod produktu: </strong><span class="label label-warning" th:text="${product.productId}"></span>
-						</p>
-						<p>
-							<strong>Producent:</strong><span th:text="${product.manufacturer}"></span>
-						</p>
-						<p>
-							<strong>Kategoria: </strong> <span th:text="${product.category}"></span>
-						</p>
-						<p>
-							<strong>Liczba sztuk w magazynie</strong>: <span th:text="${product.unitsInStock}"></span>
-						</p>
-						<h4> <span th:text="${product.unitPrice}"></span> PLN</h4>
-						<p>
-							<span th:if="${product.unitsInStock != 0}">
-								<span sec:authorize="!hasRole('ROLE_ADMIN')">
-									<a th:href="@{'/addToCart?name=' + ${product.name}}" class="btn btn-warning btn-large"> 
-									<span class="glyphicon-shopping-cart glyphicon"></span> Zamów teraz
-									</a> 
+		<div class="container">
+	       	<div th:include="fragments/header::head"></div>	
+				<div class="container">
+					<div class="row">
+						<div class="col-md-5">
+							<p>
+								<span sec:authorize="hasRole('ROLE_ADMIN')">
+									<a th:href="@{'/products/delete?id=' + ${product.productId}}" class="btn btn-danger">
+										<span class="glyphicon glyphicon-trash"></span> Usuń
+									</a>
 								</span>
-								<a th:href="@{/products}" class="btn btn-default">
-									<span class="glyphicon-hand-left glyphicon"></span> Powrót
-								</a>
-							</span>
-						</p>
+							</p>
+							<h3 th:text="${product.name}"></h3>
+							<p th:text="${product.description}"></p>
+							<p>
+								<strong>Kod produktu: </strong><span class="label label-warning" th:text="${product.productId}"></span>
+							</p>
+							<p>
+								<strong>Producent:</strong><span th:text="${product.manufacturer}"></span>
+							</p>
+							<p>
+								<strong>Kategoria: </strong> <span th:text="${product.category}"></span>
+							</p>
+							<p>
+								<strong>Liczba sztuk w magazynie</strong>: <span th:text="${product.unitsInStock}"></span>
+							</p>
+							<h4> <span th:text="${product.unitPrice}"></span> PLN</h4>
+							<p>
+								<span th:if="${product.unitsInStock != 0}">
+									<span sec:authorize="!hasRole('ROLE_ADMIN')">
+										<a th:href="@{'/addToCart?name=' + ${product.name}}" class="btn btn-warning btn-large"> 
+										<span class="glyphicon-shopping-cart glyphicon"></span> Zamów teraz
+										</a> 
+									</span>
+									<a th:href="@{/products}" class="btn btn-default">
+										<span class="glyphicon-hand-left glyphicon"></span> Powrót
+									</a>
+								</span>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 	</body>
 </html>

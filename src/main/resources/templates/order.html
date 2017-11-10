@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
-<title>Produkt</title>
-</head>
-<body>
-	<div class="container">
-	       	<div th:include="fragments/header::head"></div>
-	
-		<section>
-			<div class="container">
-				<div class="page-header">
-					<h1>Zamówienie <!-- #<span th:text="${order.id}"></span> --> </h1>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<link rel="stylesheet"
+			href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
+		<title>Produkt</title>
+	</head>
+	<body>
+		<div class="container">
+		    <div th:include="fragments/header::head"></div>		
+				<section>
+					<div class="container">
+						<div class="page-header">
+							<h1>Zamówienie</h1>
+						</div>
+					</div>
+				</section>
+				<div class="container">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+						    	<th>Produkt</th>
+						    	<th>Ilość</th>
+						    	<th>Cena produktu</th>
+						    </tr>
+						</thead>
+						<span th:each="item : ${orderItems}">
+							<tbody>
+							    <tr>
+							    	<th scope="row" th:text="${item.product.name}"></th>
+							    	<td th:text="${item.amount}"></td>
+							    	<td th:text="${item.product.unitPrice}"></td>
+								</tr>
+							</tbody>
+						</span>
+					</table>
 				</div>
 			</div>
-		</section>
-
-	<div class="container">
-		<table class="table table-hover">
-			  <thead>
-			    <tr>
-			      <th>Produkt</th>
-			      <th>Ilość</th>
-			      <th>Cena produktu</th>
-<!-- 			      <th>Suma</th>
- -->			    </tr>
-			  </thead>
-			  <span th:each="item : ${orderItems}">
-			  <tbody>
-			    <tr>
-			      <th scope="row" th:text="${item.product.name}"></th>
-			      <td th:text="${item.amount}"></td>
-			      <td th:text="${item.product.unitPrice}"></td>
-<!-- 			      <td th:text="${order.total}"></td>
- -->			</tr>
-			  </tbody>
-			  </span>
-		</table>
-	</div>
-</div>
-</body>
+		</div>
+	</body>
 </html>
