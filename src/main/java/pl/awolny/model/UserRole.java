@@ -13,7 +13,6 @@ import lombok.ToString;
  
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @Entity
 public class UserRole implements Serializable{
@@ -24,4 +23,9 @@ public class UserRole implements Serializable{
     private Long id;
     private String role;
     private String description;
+    
+	@Override
+	public String toString() {
+		return description;
+	}
 }
