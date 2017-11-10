@@ -1,128 +1,69 @@
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
-<title>Produkty</title>
-</head>
-<body>
-	<div class="container">
-    	<div sec:authorize="hasRole('ROLE_ADMIN')">
-		<div class="navbar navbar-inverse">
-			 <div class="container-fluid">
-				 <div class="navbar-header">
-					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
-					 <span class="icon-bar"></span>
-					 <span class="icon-bar"></span>
-					 <span class="icon-bar"></span>
-					 </button>
-					 <a class="navbar-brand" th:href="@{/}">Shop</a>
-				 </div>
-				 <div class="collapse navbar-collapse" id="mynavbar-content">
-				 	<ul class="nav navbar-nav">
-						 <li class="active"><a th:href="@{/products/add}">Dodaj produkt</a></li>
-						 <li class="active"><a th:href="@{/showUsers}">Pokaż użytkowników</a></li>
-						 <li class="active"><a th:href="@{/products/add}">Pokaż zamówienia</a></li>
-					</ul>
-					 <div sec:authorize="isAuthenticated()"> 
- 						 <ul class="nav navbar-nav navbar-right">
-							 <li><a th:href="@{/logmeout}">Logout</a></li>
-						 </ul>	 
-					 </div>
-			     </div>
-		     </div>
-		</div>
-		</div>
-		
-		<div sec:authorize="!hasRole('ROLE_ADMIN')">
-		<div class="navbar navbar-inverse">
-			 <div class="container-fluid">
-				 <div class="navbar-header">
-					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
-					 <span class="icon-bar"></span>
-					 <span class="icon-bar"></span>
-					 <span class="icon-bar"></span>
-					 </button>
-					 <a class="navbar-brand" th:href="@{/}">Shop</a>
-				 </div>
-				 <div class="collapse navbar-collapse" id="mynavbar-content">
-					<div sec:authorize="isAnonymous()">
-						 <ul class="nav navbar-nav navbar-right">
-							 <li><a th:href="@{/register}">Zarejestruj się</a></li>
-							 <li><a th:href="@{/login}">Zaloguj się</a></li>
-						 </ul>
-					 </div>
-					 <div sec:authorize="isAuthenticated()"> 
- 						 <ul class="nav navbar-nav navbar-right">
-							 <li><a th:href="@{/cart}">Koszyk</a></li>
-							 <li><a th:href="@{/logmeout}">Logout</a></li>
-						 </ul>
-						 
-					 </div>
-				 </div>
-			</div>
-		</div>
-		</div>
-	</div>
-		<section>
-			<div class="container">
-				<div class="page-header">
-					<h1>Użytkownicy <small></small></h1>
-				</div>
-			</div>
-		</section>
-	
-<div class="container">
-	<div class="row">
-		<div class="col-xs-8">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<div class="panel-title">
-						<div class="row">
-							<div class="col-xs-6">
-								<h5><span class="glyphicon glyphicon-shopping-cart"></span> Wszystkie produkty w Twoim koszyku</h5>
-							</div>
-							<div class="col-xs-6">
-								<a th:href="@{/}">
-								<button type="button" class="btn btn-primary btn-sm btn-block">
-									<span class="glyphicon glyphicon-share-alt"></span> Continue shopping
-								</button>
-								</a>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
+		<title>Produkty</title>
+	</head>
+	<body>
+		<div class="container">
+        	<div th:include="fragments/header::head"></div>
+				<section>
+					<div class="container">
+						<div class="page-header">
+							<h1>Użytkownicy</h1>
+						</div>
+					</div>
+				</section>
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-8">
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<div class="panel-title">
+										<div class="row">
+											<div class="col-xs-6">
+												<h5><span class="glyphicon glyphicon-shopping-cart"></span> Wszystkie produkty w Twoim koszyku</h5>
+											</div>
+											<div class="col-xs-6">
+												<a th:href="@{/}">
+													<button type="button" class="btn btn-primary btn-sm btn-block">
+														<span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+													</button>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div class="row" th:each="user : ${users}">
+				 						<div class="col-xs-2"><h4 class="product-name"><strong th:text="${user.firstName}"></strong></h4>
+									</div>
+									<div class="col-xs-2">
+										<h4 class="product-name"><strong th:text="${user.lastName}"></strong></h4>
+									</div>
+									<div class="col-xs-7">
+										<div class="col-xs-6 text-right">
+											<h6><strong th:text="${user.email}"> <span class="text-muted">x</span></strong></h6>
+										</div>
+									<div class="col-xs-5">
+										<h4 class="product-name"><strong th:text="${user.roles}"></strong></h4>
+									</div>
+										<div class="col-xs-1">
+											<span th:if="${user.id != -1}">
+												<a th:href="@{'/deleteUser?id=' + ${user.firstName}}">
+													<button type="button" class="btn btn-link btn-xs">
+														<span class="glyphicon glyphicon-trash"> </span>
+													</button>
+												</a>
+											</span>
+										</div>
+									</div>
+			   					</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="panel-body">
-						<div class="row" th:each="user : ${users}">
- 						<div class="col-xs-2"><h4 class="product-name"><strong th:text="${user.firstName}"></strong></h4>
-						</div>
-						<div class="col-xs-2">
-							<h4 class="product-name"><strong th:text="${user.lastName}"></strong></h4>
-						</div>
-						<div class="col-xs-7">
-							<div class="col-xs-6 text-right">
-								<h6><strong th:text="${user.email}"> <span class="text-muted">x</span></strong></h6>
-							</div>
-						<div class="col-xs-5">
-							<h4 class="product-name"><strong th:text="${user.roles}"></strong></h4>
-						</div>
-							<div class="col-xs-1">
-								<span th:if="${user.id != -1}">
-									<a th:href="@{'/deleteUser?id=' + ${user.firstName}}">
-									<button type="button" class="btn btn-link btn-xs">
-										<span class="glyphicon glyphicon-trash"> </span>
-									</button>
-									</a>
-								</span>
-							</div>
-						</div>
-   					</div>
-
-				</div>
 			</div>
 		</div>
-	</div>
-</div>
-
-</body>
+	</body>
 </html>

@@ -1,89 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
-<title>Produkt</title>
-</head>
-<body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<link rel="stylesheet"
+			href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
+		<title>Produkt</title>
+	</head>
+	<body>
 	<div class="container">
-		<div class="navbar navbar-inverse">
-			 <div class="container-fluid">
-				 <div class="navbar-header">
-					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
-					 <span class="icon-bar"></span>
-					 <span class="icon-bar"></span>
-					 <span class="icon-bar"></span>
-					 </button>
-					 <a class="navbar-brand" th:href="@{/}">SitePoint</a>
-					 </div>
-					 <div class="collapse navbar-collapse" id="mynavbar-content">
-					 <ul class="nav navbar-nav">
-					 <li class="active"><a th:href="@{/products/add}">Dodaj produkt</a></li>
-					 <li><a href="#">Zarejestruj się</a></li>
-					 <li><a href="#">Zaloguj się</a></li>
-					 
-
-					 </ul>
-				 </div>
-			 </div>
-		</div>
-		<ul class="nav nav-tabs">
-		 <li class="active"><a href="#home" data-toggle="tab">Wszystkie produkty</a></li>
-		 <li><a href="#profile" data-toggle="tab">Smartfony</a></li>
-		 <li><a href="#messages" data-toggle="tab">Tablety</a></li>
-		 <li><a href="#settings" data-toggle="tab">Laptopy</a></li>
-		</ul>
-		<section>
+       	<div th:include="fragments/header::head"></div>	
 			<div class="container">
-				<div class="page-header">
-					<h1>Produkty <small>Wszystkie produkty dostępne w naszym sklepie</small></h1>
+				<div class="row">
+					<div class="col-md-5">
+						<p>
+							<span sec:authorize="hasRole('ROLE_ADMIN')">
+								<a th:href="@{'/products/delete?id=' + ${product.productId}}" class="btn btn-danger">
+									<span class="glyphicon glyphicon-trash"></span> Usuń
+								</a>
+							</span>
+						</p>
+						<h3 th:text="${product.name}"></h3>
+						<p th:text="${product.description}"></p>
+						<p>
+							<strong>Kod produktu: </strong><span class="label label-warning" th:text="${product.productId}"></span>
+						</p>
+						<p>
+							<strong>Producent:</strong><span th:text="${product.manufacturer}"></span>
+						</p>
+						<p>
+							<strong>Kategoria: </strong> <span th:text="${product.category}"></span>
+						</p>
+						<p>
+							<strong>Liczba sztuk w magazynie</strong>: <span th:text="${product.unitsInStock}"></span>
+						</p>
+						<h4> <span th:text="${product.unitPrice}"></span> PLN</h4>
+						<p>
+							<span th:if="${product.unitsInStock != 0}">
+								<span sec:authorize="!hasRole('ROLE_ADMIN')">
+									<a th:href="@{'/addToCart?name=' + ${product.name}}" class="btn btn-warning btn-large"> 
+									<span class="glyphicon-shopping-cart glyphicon"></span> Zamów teraz
+									</a> 
+								</span>
+								<a th:href="@{/products}" class="btn btn-default">
+									<span class="glyphicon-hand-left glyphicon"></span> Powrót
+								</a>
+							</span>
+						</p>
+					</div>
 				</div>
 			</div>
-		</section>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-md-5">
-				<p>
-					<span sec:authorize="hasRole('ROLE_ADMIN')">
-						<a th:href="@{'/products/delete?id=' + ${product.productId}}" class="btn btn-danger">
-							<span class="glyphicon glyphicon-trash"></span> delete
-						</a>
-					</span>
-				</p>
-				<h3 th:text="${product.name}"></h3>
-				<p th:text="${product.description}"></p>
-				<p>
-					<strong>Kod produktu: </strong><span class="label label-warning" th:text="${product.productId}"></span>
-				</p>
-				<p>
-					<strong>Producent:</strong><span th:text="${product.manufacturer}"></span>
-				</p>
-				<p>
-					<strong>Kategoria: </strong> <span th:text="${product.category}"></span>
-				</p>
-				<p>
-					<strong>Liczba sztuk w magazynie</strong>: <span th:text="${product.unitsInStock}"></span>
-				</p>
-				<h4> <span th:text="${product.unitPrice}"></span> PLN</h4>
-				<p>
-					<span th:if="${product.unitsInStock != 0}">
-						<span sec:authorize="!hasRole('ROLE_ADMIN')">
-							<a th:href="@{'/addToCart?name=' + ${product.name}}" class="btn btn-warning btn-large"> 
-							<span class="glyphicon-shopping-cart glyphicon"></span> Zamów teraz
-							</a> 
-						</span>
-						
-						<a th:href="@{/products}" class="btn btn-default">
-							<span class="glyphicon-hand-left glyphicon"></span> powrót
-						</a>
-					</span>
-				</p>
-			</div>
 		</div>
-	</div>
-	</div>
-</body>
+	</body>
 </html>
