@@ -76,7 +76,7 @@ public class ProductController{
             return "addProduct";
         else {
             productService.addProduct(product);
-            return "registerSuccess";
+            return "additionSuccess";
         }
     }
 }
