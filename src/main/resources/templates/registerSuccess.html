@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
 		<meta charset="UTF-8"></meta>
-		<title>Registration Success</title>
+		<title>Udana rejestracja</title>
 	</head>
 	<body>
-	    <h1>Thanks for registration!</h1>
-	    <a href="#" th:href="@{/}">Go to homepage</a>
+		<div class="container">
+	       	<div th:include="fragments/header::head"></div>	
+	       	<div class="container">
+				<h1>Stworzono nowe konto!</h1>
+				<a th:href="@{/}">Strona główna</a>
+			</div>
+		</div>
 	</body>
 </html>
