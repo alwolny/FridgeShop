@@ -1,8 +1,8 @@
 insert into shop.user_role(id, role, description) VALUES (1, 'ROLE_USER', 'user');
 insert into shop.user_role(id, role, description) VALUES (2, 'ROLE_ADMIN', 'admin');
 insert into shop.shopping_carts(cart_id) VALUES (-2);
-insert into shop.users(user_id, email, last_name, passwort) VALUES (-1, 'admin@o2.pl', 'admin', 'admin');
-insert into shop.users(user_id, email, last_name, passwort, cart_cart_id) VALUES (-2, 'jankowalski@o2.pl', 'kowalski', 'jan', -2);
+insert into shop.users(user_id, email, last_name, passwort) VALUES (-1, 'admin@o2.pl', 'admin', '$2a$10$VpxT7HGNvFeslPj23CK0w.s3ncAYVrZM1UCA4ueR8RWBH52sPGMRm');
+insert into shop.users(user_id, email, last_name, passwort, cart_cart_id) VALUES (-2, 'jankowalski@o2.pl', 'kowalski', '$2a$10$2CZyFoEiIlvgTjM4EiBm4Omj5zwdb/9qAbhYL.dlmcH0Eaf4LAGj2', -2);
 insert into shop.users_roles(user_user_id, roles_id) VALUES (-1, 2);
 insert into shop.users_roles(user_user_id, roles_id) VALUES (-2, 1);
 

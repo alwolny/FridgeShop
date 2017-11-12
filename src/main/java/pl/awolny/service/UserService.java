@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import pl.awolny.model.ShoppingCart;
@@ -34,6 +36,9 @@ public class UserService {
 		UserRole defaultRole = roleRepository.findByRole(DEFAULT_ROLE);
         user.getRoles().add(defaultRole);
 		user.setCart(new ShoppingCart());
+		String hashedPass = new BCryptPasswordEncoder().encode(user.getPassword());
+		// = encoder.encode(user.getPassword());
+		user.setPassword(hashedPass);
 		userRepository.save(user);
 	} 
 	public void save(User user){
