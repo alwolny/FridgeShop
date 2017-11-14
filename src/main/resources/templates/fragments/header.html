@@ -1,8 +1,11 @@
-	<div th:fragment="head">
+<div th:fragment="head">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	
-    	<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
 		<div class="navbar navbar-inverse">
 			 <div class="container-fluid">
 				 <div class="navbar-header">
@@ -27,9 +30,9 @@
 			     </div>
 		     </div>
 		</div>
-		</div>
+	</div>
 		
-		<div sec:authorize="!hasRole('ROLE_ADMIN')">
+	<div sec:authorize="!hasRole('ROLE_ADMIN')">
 		<div class="navbar navbar-inverse">
 			 <div class="container-fluid">
 				 <div class="navbar-header">
@@ -48,17 +51,20 @@
 						 </ul>
 					 </div>
 					 <div sec:authorize="isAuthenticated()"> 
- 						 <ul class="nav navbar-nav navbar-right">
-							 <li><a th:href="@{/cart}">Koszyk</a></li>
-							 <li><a th:href="@{/logmeout}">Logout</a></li>
-						 </ul>
-						 
+						 <ul class="nav navbar-nav navbar-right">
+							 <li class="dropdown">
+								 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Panel użytkownika<span class="caret"></span></a>
+								 <ul class="dropdown-menu">
+									 <li><a th:href="@{/cart}">Koszyk</a></li>
+									 <li><a th:href="@{/list/orders}">Pokaż zamówienia</a></li>
+									 <li class="divider"></li>
+									 <li><a th:href="@{/logmeout}">Wyloguj</a></li>
+								 </ul>
+							 </li>
+						 </ul>		 
 					 </div>
 				 </div>
 			</div>
 		</div>
-		</div>
-		
-		
-
 	</div>
+</div>
