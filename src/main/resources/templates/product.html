@@ -20,6 +20,21 @@
 								</span>
 							</p>
 							<h3 th:text="${product.name}"></h3>
+							<span th:if="${product.category == 'fridge'}">
+								<img th:src="@{https://i.pinimg.com/236x/4a/70/9f/4a709ffd029ebb9c51036d33956e21da.jpg}" />
+							</span>
+							<span th:if="${product.category == 'refrigerator'}">
+								<img th:src="@{http://reviewsera.com/wp-content/uploads/2017/03/Sansui-SC091PSH-Direct-cool-Single-door-Refrigerator-200x300.jpg}" />
+							</span>
+							<span th:if="${product.category == 'cabinet'}">
+								<img th:src="@{https://i.ebayimg.com/images/g/pw8AAOSwe7BWw3G5/s-l300.jpg}" />
+							</span>
+							<span th:if="${product.category == 'coolerbox'}">
+								<img th:src="@{https://images-na.ssl-images-amazon.com/images/I/31gTSDKLreL._SY300_.jpg}" />
+							</span>
+							<span th:if="${product.category == 'accessory'}">
+								<img th:src="@{https://images-eu.ssl-images-amazon.com/images/I/213UPBVQc-L._SY300_QL70_.jpg}" />
+							</span>
 							<p th:text="${product.description}"></p>
 							<p>
 								<strong>Kod produktu: </strong><span class="label label-warning" th:text="${product.productId}"></span>

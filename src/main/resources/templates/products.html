@@ -12,9 +12,9 @@
 				 <li class="active"><a th:href="@{/products}" data-toggle="tab">Wszystkie produkty</a></li>
 				 <li><a th:href="@{/products/fridge}" data-toggle="tab">Lodówka</a></li>
 				 <li><a th:href="@{/products/refrigerator}" data-toggle="tab">Zamrażarka</a></li>
-				 <li><a th:href="@{/products/cabinet}" data-toggle="tab">Lady i witryny chłodnicze</a></li>
+				 <li><a th:href="@{/products/cabinet}" data-toggle="tab">Witryny chłodnicze</a></li>
 				 <li><a th:href="@{/products/coolerbox}" data-toggle="tab">Lodówki turystyczne</a></li>
-				 <li><a th:href="@{/products/accessory}" data-toggle="tab">Akcesoria do lodówek</a></li>
+				 <li><a th:href="@{/products/accessory}" data-toggle="tab">Akcesoria</a></li>
 				</ul>
 			<section>
 				<div class="container">
@@ -30,7 +30,7 @@
 							<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 								<div class="thumbnail">
 								<span th:if="${product.category == 'fridge'}">
-									<img th:src="@{https://i.ebayimg.com/images/g/0lsAAOSwdrdZbtMp/s-l300.jpg}" />
+									<img th:src="@{https://i.pinimg.com/236x/4a/70/9f/4a709ffd029ebb9c51036d33956e21da.jpg}" />
 								</span>
 								<span th:if="${product.category == 'refrigerator'}">
 									<img th:src="@{http://reviewsera.com/wp-content/uploads/2017/03/Sansui-SC091PSH-Direct-cool-Single-door-Refrigerator-200x300.jpg}" />
