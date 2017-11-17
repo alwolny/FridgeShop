@@ -9,8 +9,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+
+import pl.awolny.model.Product;
 import pl.awolny.model.User;
 import pl.awolny.service.UserService;
  
@@ -26,6 +30,12 @@ public class UserController {
         return "registerForm";
     }
     
+    @GetMapping("/userPage")
+    public String getUserPage(Model model) {
+    	User user = userService.getAuthUser();
+        model.addAttribute("user", user);
+        return "userPage";
+    }
  
     @PostMapping("/register")
     public String addUser(@ModelAttribute @Valid User user,
@@ -38,11 +48,17 @@ public class UserController {
         }
     }  
     
+    @RequestMapping("/deleteUser")
+    public String delete() {
+    	userService.deleteLoggedInUser();	
+/*        model.addAttribute("product", new Product());
+*/        return "redirect:logmeout";
+    }
 	
 	@GetMapping("/list/users")
 	public String showUsers(Model model) {
 		List<User> users = userService.getUsers();
         model.addAttribute("users", users);
 	    return "userList";
-	}	
+	}
 }
