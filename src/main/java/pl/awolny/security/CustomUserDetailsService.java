@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import pl.awolny.exceptions.UserNotActiveException;
 import pl.awolny.model.User;
 import pl.awolny.model.UserRole;
 import pl.awolny.repository.UserRepository;
@@ -27,7 +28,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(username);
         if(user == null)
-            throw new UsernameNotFoundException("User not found");
+            throw new UsernameNotFoundException("Niepoprawny login lub hasło");
+        if(!user.isActive())
+            throw new UserNotActiveException("Konto zostało usunięte");        
         org.springframework.security.core.userdetails.User userDetails = 
                 new org.springframework.security.core.userdetails.User(
                         user.getEmail(), 

@@ -8,7 +8,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import pl.awolny.model.CartItem;
+import pl.awolny.model.Product;
 import pl.awolny.model.ShoppingCart;
 import pl.awolny.model.User;
 import pl.awolny.model.UserRole;
@@ -56,5 +59,12 @@ public class UserService {
 	
 	public List<User> getUsers(){
 		return userRepository.findAll();
+	}
+	
+	@Transactional
+	public void deleteLoggedInUser() {
+		User user = getAuthUser();
+		user.setActive(false);
+		userRepository.save(user);
 	}
 }
