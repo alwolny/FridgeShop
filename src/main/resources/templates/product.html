@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet"
-			href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
-		<title>Produkt</title>
+			href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+		<title th:text="${product.name}"></title>
 	</head>
 	<body>
 		<div class="container">
 	       	<div th:include="fragments/header::head"></div>	
-				<div class="container">
-					<div class="row">
-						<div class="col-md-5">
-							<p>
-								<span sec:authorize="hasRole('ROLE_ADMIN')">
-									<a th:href="@{'/products/delete?id=' + ${product.productId}}" class="btn btn-danger">
-										<span class="glyphicon glyphicon-trash"></span> Usuń
-									</a>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<p>
+							<span sec:authorize="hasRole('ROLE_ADMIN')">
+								<a th:href="@{'/products/delete?id=' + ${product.productId}}" class="btn btn-danger">
+									<span class="glyphicon glyphicon-trash"></span> Usuń
+								</a>
+							</span>
+						</p>
+						<h3 th:text="${product.name}"></h3>
+						<span th:if="${product.category == 'fridge'}">
+							<img th:src="@{https://i.pinimg.com/236x/4a/70/9f/4a709ffd029ebb9c51036d33956e21da.jpg}" />
+						</span>
+						<span th:if="${product.category == 'refrigerator'}">
+							<img th:src="@{http://reviewsera.com/wp-content/uploads/2017/03/Sansui-SC091PSH-Direct-cool-Single-door-Refrigerator-200x300.jpg}" />
+						</span>
+						<span th:if="${product.category == 'cabinet'}">
+							<img th:src="@{https://i.ebayimg.com/images/g/pw8AAOSwe7BWw3G5/s-l300.jpg}" />
+						</span>
+						<span th:if="${product.category == 'coolerbox'}">
+							<img th:src="@{https://images-na.ssl-images-amazon.com/images/I/31gTSDKLreL._SY300_.jpg}" />
+						</span>
+						<span th:if="${product.category == 'accessory'}">
+							<img th:src="@{https://images-eu.ssl-images-amazon.com/images/I/213UPBVQc-L._SY300_QL70_.jpg}" />
+						</span>
+						<p th:text="${product.description}"></p>
+						<p>
+							<strong>Kod produktu: </strong><span class="label label-warning" th:text="${product.productId}"></span>
+						</p>
+						<p>
+							<strong>Producent:</strong><span th:text="${product.manufacturer}"></span>
+						</p>
+						<p>
+							<strong>Kategoria: </strong> <span th:text="${product.category}"></span>
+						</p>
+						<p>
+							<strong>Liczba sztuk w magazynie: </strong><span th:text="${product.unitsInStock}"></span>
+						</p>
+						<h4> <span th:text="${product.unitPrice}"></span> PLN</h4>
+						<p>
+							<span th:if="${product.unitsInStock != 0}">
+								<span sec:authorize="!hasRole('ROLE_ADMIN')">
+									<a th:href="@{'/addToCart?name=' + ${product.name}}" class="btn btn-warning btn-large"> 
+									<span class="glyphicon-shopping-cart glyphicon"></span> Zamów teraz
+									</a> 
 								</span>
-							</p>
-							<h3 th:text="${product.name}"></h3>
-							<span th:if="${product.category == 'fridge'}">
-								<img th:src="@{https://i.pinimg.com/236x/4a/70/9f/4a709ffd029ebb9c51036d33956e21da.jpg}" />
+								<a th:href="@{/products}" class="btn btn-default">
+									<span class="glyphicon-hand-left glyphicon"></span> Powrót
+								</a>
 							</span>
-							<span th:if="${product.category == 'refrigerator'}">
-								<img th:src="@{http://reviewsera.com/wp-content/uploads/2017/03/Sansui-SC091PSH-Direct-cool-Single-door-Refrigerator-200x300.jpg}" />
-							</span>
-							<span th:if="${product.category == 'cabinet'}">
-								<img th:src="@{https://i.ebayimg.com/images/g/pw8AAOSwe7BWw3G5/s-l300.jpg}" />
-							</span>
-							<span th:if="${product.category == 'coolerbox'}">
-								<img th:src="@{https://images-na.ssl-images-amazon.com/images/I/31gTSDKLreL._SY300_.jpg}" />
-							</span>
-							<span th:if="${product.category == 'accessory'}">
-								<img th:src="@{https://images-eu.ssl-images-amazon.com/images/I/213UPBVQc-L._SY300_QL70_.jpg}" />
-							</span>
-							<p th:text="${product.description}"></p>
-							<p>
-								<strong>Kod produktu: </strong><span class="label label-warning" th:text="${product.productId}"></span>
-							</p>
-							<p>
-								<strong>Producent:</strong><span th:text="${product.manufacturer}"></span>
-							</p>
-							<p>
-								<strong>Kategoria: </strong> <span th:text="${product.category}"></span>
-							</p>
-							<p>
-								<strong>Liczba sztuk w magazynie</strong>: <span th:text="${product.unitsInStock}"></span>
-							</p>
-							<h4> <span th:text="${product.unitPrice}"></span> PLN</h4>
-							<p>
-								<span th:if="${product.unitsInStock != 0}">
-									<span sec:authorize="!hasRole('ROLE_ADMIN')">
-										<a th:href="@{'/addToCart?name=' + ${product.name}}" class="btn btn-warning btn-large"> 
-										<span class="glyphicon-shopping-cart glyphicon"></span> Zamów teraz
-										</a> 
-									</span>
-									<a th:href="@{/products}" class="btn btn-default">
-										<span class="glyphicon-hand-left glyphicon"></span> Powrót
-									</a>
-								</span>
-							</p>
-						</div>
+						</p>
 					</div>
 				</div>
 			</div>
+		</div>
 	</body>
 </html>
