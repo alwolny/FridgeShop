@@ -39,10 +39,12 @@ public class UserService {
 		UserRole defaultRole = roleRepository.findByRole(DEFAULT_ROLE);
         user.getRoles().add(defaultRole);
 		user.setCart(new ShoppingCart());
+		user.setActive(true);
 		String hashedPass = new BCryptPasswordEncoder().encode(user.getPassword());
 		// = encoder.encode(user.getPassword());
 		user.setPassword(hashedPass);
 		userRepository.save(user);
+		System.out.println(user.isActive());
 	} 
 	public void save(User user){
 		userRepository.save(user);
