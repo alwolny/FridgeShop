@@ -54,6 +54,25 @@ public class UserController {
 /*        model.addAttribute("product", new Product());
 */        return "redirect:logmeout";
     }
+    
+    @RequestMapping("/changePass")
+    public String changePass() {
+    	return "newPass";
+    }
+    
+    @PostMapping("/changePass")
+    public String changePass(@RequestParam("new") String new1, @RequestParam("new2") String new2/*,
+            BindingResult bindResult*/) {
+/*        if(bindResult.hasErrors())
+            return "registerForm";*/
+    	if(new1.equals(new2)){
+    		userService.setNewPassword(new1);
+    		return "redirect:/";
+    	}
+        else {
+            return "newPassError";
+        }
+    } 
 	
 	@GetMapping("/list/users")
 	public String showUsers(Model model) {

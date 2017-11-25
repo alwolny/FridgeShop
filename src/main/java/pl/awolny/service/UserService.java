@@ -69,4 +69,11 @@ public class UserService {
 		user.setActive(false);
 		userRepository.save(user);
 	}
+
+	public void setNewPassword(String new1) {
+		User user = getAuthUser();
+		String hashedPass = new BCryptPasswordEncoder().encode(new1);
+		user.setPassword(hashedPass);
+		userRepository.save(user);
+	}
 }

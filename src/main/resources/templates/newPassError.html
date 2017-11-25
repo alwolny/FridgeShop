@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
+		<meta charset="UTF-8"></meta>
+		<title>Nieudana zmiana hasła</title>
+	</head>
+	<body>
+		<div class="container">
+	       	<div th:include="fragments/header::head"></div>	
+	       	<div class="container">
+				<h1>Podane hasła różnią się!</h1>
+				<a th:href="@{/changePass}">Wróć do zmiany hasła</a>
+			</div>
+		</div>
+	</body>
+</html>

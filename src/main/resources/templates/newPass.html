@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
+		<title>Zmiana hasła</title>
+	</head>
+	<body>
+		<div class="container">
+		<div th:include="fragments/header::head"></div>
+	       	<div class="container">
+				<div class="text-center">
+					<div class="col-sm-12">
+						<h1>Zmień hasło</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3">
+						<form method="post" id="passwordForm" th:action="@{/changePass}">
+							<input type="password" class="input-lg form-control" name="new" id="password1" placeholder="Nowe hasło" autocomplete="off">
+							<div class="row">
+							</div>
+							<input type="password" class="input-lg form-control" name="new2" id="password2" placeholder="Powtóz hasło" autocomplete="off"></input>
+							<div class="row">
+							</div>
+  							<input type="submit" class="col-xs-12 btn btn-primary btn-load btn-lg" data-loading-text="Changing Password..." value="Change Password">
+ 							</input>
+ 				</input></form>
+					</div><!--/col-sm-6-->
+				</div><!--/row-->
+			</div>
+		</div>
+	</body>
+</html>
