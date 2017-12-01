@@ -3,7 +3,23 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style >
+		.navbar {margin-bottom:0;}
+		.navbar-header{position: relative; }
+	</style>
 
+	
+		<div class="navbar navbar-default">
+			<div class="container-fluid" th:with="currentUrl=(${#httpServletRequest.requestURI + '?' + #strings.defaultString(#httpServletRequest.queryString, '')})">
+			   	<a th:href="@{${currentUrl}(lang=pl)}">
+			   		<img th:src="@{http://static.tvtropes.org/pmwiki/pub/images/poland_flag_163.png}" height="30" width="60" />
+			   	</a>
+			   	<a th:href="@{${currentUrl}(lang=en)}">
+					<img th:src="@{https://dqbasmyouzti2.cloudfront.net/assets/content/cache/made/content/images/articles/UK_flag_XL_600_400_80.jpg}" height="30" width="60" />
+		   		</a>
+		   		<img th:src="@{https://dqbasmyouzti2.cloudfront.net/assets/content/cache/made/content/images/articles/UK_flag_XL_600_400_80.jpg}" height="45" width="0" />
+			</div>	
+		</div>
 	
     <div sec:authorize="hasRole('ROLE_ADMIN')">
 		<div class="navbar navbar-inverse">
@@ -14,17 +30,17 @@
 					 <span class="icon-bar"></span>
 					 <span class="icon-bar"></span>
 					 </button>
-					 <a class="navbar-brand" th:href="@{/}">Shop</a>
+					 <a class="navbar-brand" th:href="@{/}" th:text="#{header.pagename}"></a>
 				 </div>
 				 <div class="collapse navbar-collapse" id="mynavbar-content">
 				 	<ul class="nav navbar-nav">
-						 <li class="active"><a th:href="@{/products/add}">Dodaj produkt</a></li>
-						 <li class="active"><a th:href="@{/list/users}">Pokaż użytkowników</a></li>
-						 <li class="active"><a th:href="@{/list/orders}">Pokaż zamówienia</a></li>					
+						 <li class="active"><a th:href="@{/products/add}" th:text="#{header.add.product}"></a></li>
+						 <li class="active"><a th:href="@{/list/users}" th:text="#{header.show.users}"></a></li>
+						 <li class="active"><a th:href="@{/list/orders}" th:text="#{header.show.orders}"></a></li>					
 					</ul>
 					 <div sec:authorize="isAuthenticated()"> 
  						 <ul class="nav navbar-nav navbar-right">
-							 <li><a th:href="@{/logmeout}">Logout</a></li>
+							 <li><a th:href="@{/logmeout}" th:text="#{header.logout}"></a></li>
 						 </ul>	 
 					 </div>
 			     </div>
@@ -41,25 +57,25 @@
 					 <span class="icon-bar"></span>
 					 <span class="icon-bar"></span>
 					 </button>
-					 <a class="navbar-brand" th:href="@{/}">Shop</a>
+					 <a class="navbar-brand" th:href="@{/}" th:text="#{header.pagename}"></a>
 				 </div>
 				 <div class="collapse navbar-collapse" id="mynavbar-content">
 					<div sec:authorize="isAnonymous()">
 						 <ul class="nav navbar-nav navbar-right">
-							 <li><a th:href="@{/register}">Zarejestruj się</a></li>
-							 <li><a th:href="@{/login}">Zaloguj się</a></li>
+							 <li><a th:href="@{/register}" th:text="#{header.register}"></a></li>
+							 <li><a th:href="@{/login}" th:text="#{header.login}"></a></li>
 						 </ul>
 					 </div>
 					 <div sec:authorize="isAuthenticated()"> 
 						 <ul class="nav navbar-nav navbar-right">
 							 <li class="dropdown">
-								 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Panel użytkownika<span class="caret"></span></a>
+								 <a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{header.userpanel}"><span class="caret"></span></a>
 								 <ul class="dropdown-menu">
-								 	 <li><a th:href="@{/userPage}">Konto</a></li>
-									 <li><a th:href="@{/cart}">Koszyk</a></li>
-									 <li><a th:href="@{/list/orders}">Zamówienia</a></li>
+								 	 <li><a th:href="@{/userPage}" th:text="#{header.account}"></a></li>
+									 <li><a th:href="@{/cart}" th:text="#{header.cart}"></a></li>
+									 <li><a th:href="@{/list/orders}" th:text="#{header.orders}"></a></li>
 									 <li class="divider"></li>
-									 <li><a th:href="@{/logmeout}">Wyloguj</a></li>
+									 <li><a th:href="@{/logmeout}" th:text="#{header.logout}"></a></li>
 								 </ul>
 							 </li>
 						 </ul>		 
@@ -68,10 +84,22 @@
 			</div>
 		</div>
 	</div>
+<!-- 	<div th:with="currentUrl=(${#httpServletRequest.requestURI + '?' + #strings.defaultString(#httpServletRequest.queryString, '')})">
+   		<a th:href="@{${currentUrl}(lang=pl)}">
+   			<img th:src="@{http://www.nnz.com/upload/6e378c4d-883b-469b-abe9-45d1db2c5e66.gif}" height="15" width="35" />
+   		</a>
+	</div>
+	<div th:with="currentUrl=(${#httpServletRequest.requestURI + '?' + #strings.defaultString(#httpServletRequest.queryString, '')})">
+   		<a th:href="@{${currentUrl}(lang=en)}">
+			<img th:src="@{https://dqbasmyouzti2.cloudfront.net/assets/content/cache/made/content/images/articles/UK_flag_XL_600_400_80.jpg}" height="15" width="35" />
+   		</a>
+	</div>
+	
+	
 	<a th:href="@{/?lang=pl}">
 		<img th:src="@{http://www.nnz.com/upload/6e378c4d-883b-469b-abe9-45d1db2c5e66.gif}" height="15" width="35" />
 	</a>
 	<a th:href="@{/?lang=en}">
 		<img th:src="@{https://dqbasmyouzti2.cloudfront.net/assets/content/cache/made/content/images/articles/UK_flag_XL_600_400_80.jpg}" height="15" width="35" />
-	</a>
+	</a> -->
 </div>
