@@ -11,13 +11,13 @@
 				<div class="container">
 			    <h1 th:text="#{registration.form.title}"></h1>
 			    <form action="#" method="post" th:action="@{/register}" th:object="${user}">
-			        <input th:field="*{firstName}" placeholder="First Name" /><br />
-			        <input th:field="*{lastName}" placeholder="Last Name" /><br />
+			        <input th:field="*{firstName}" placeholder="#{register.firstname}" /><br />
+			        <input th:field="*{lastName}" placeholder="#{register.lastname}" /><br />
 			        <p th:errors="*{email}">Email errors</p>
-			        <input th:field="*{email}" type="email" placeholder="Email" /><br />
+			        <input th:field="*{email}" type="email" placeholder="#{register.email}" /><br />
 			        <p th:errors="*{password}">Password errors</p>
-			        <input th:field="*{password}" type="password" placeholder="Password" /><br />
-			        <input type="submit" value="Register" />
+			        <input th:field="*{password}" type="password" placeholder="#{register.password}" /><br />
+			        <input type="submit" th:value="#{register.button}" />
 			    </form>
 	    	</div>
 	    </div>
