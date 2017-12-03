@@ -10,6 +10,8 @@
 
 	
 		<div class="navbar navbar-default">
+		<div class="nav navbar-nav navbar-right">
+		
 			<div class="container-fluid" th:with="currentUrl=(${#httpServletRequest.requestURI + '?' + #strings.defaultString(#httpServletRequest.queryString, '')})">
 			   	<a th:href="@{${currentUrl}(lang=pl)}">
 			   		<img th:src="@{http://static.tvtropes.org/pmwiki/pub/images/poland_flag_163.png}" height="30" width="60" />
@@ -19,6 +21,7 @@
 		   		</a>
 		   		<img th:src="@{https://dqbasmyouzti2.cloudfront.net/assets/content/cache/made/content/images/articles/UK_flag_XL_600_400_80.jpg}" height="45" width="0" />
 			</div>	
+		</div>
 		</div>
 	
     <div sec:authorize="hasRole('ROLE_ADMIN')">

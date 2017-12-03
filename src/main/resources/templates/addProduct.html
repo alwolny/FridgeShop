@@ -14,13 +14,12 @@
 
 		    <h1 th:text="#{add.product.message}"></h1>
 		    <form  method="post" action="upload" th:action="@{/products/add}" th:object="${product}" enctype="multipart/form-data">
-		        <input th:field="*{name}" placeholder="Name" /><br />
-		        <input th:field="*{unitPrice}" placeholder="Price" /><br />
-		        <input th:field="*{manufacturer}" placeholder="Manufacturer" /><br />
-		        <input th:field="*{description}" placeholder="Description" /><br />
-		        <input th:field="*{unitsInStock}" placeholder="Units in stock" /><br />
-		        <input th:field="*{unitsInOrder}" placeholder="Units in order" /><br />
-		        <input th:field="*{brand}" placeholder="Brand" /><br />
+		        <input th:field="*{name}" th:placeholder="#{add.name}" /><br />
+		        <input th:field="*{unitPrice}" th:placeholder="#{add.price}" /><br />
+		        <input th:field="*{manufacturer}" th:placeholder="#{add.manufacturer}" /><br />
+		        <input th:field="*{description}" th:placeholder="#{add.description}" /><br />
+		        <input th:field="*{unitsInStock}" th:placeholder="#{add.stockunits}" /><br />
+		        <input th:field="*{brand}" th:placeholder="#{add.brand}" /><br />
 				<select th:field="*{category}" class="selectpicker" data-style="btn-primary">
 				  <option th:value="fridge" th:text="#{fridge}"></option>
 				  <option th:value="refrigerator" th:text="#{refrigerator}"></option>
@@ -29,7 +28,7 @@
 				  <option th:value="accessory" th:text="#{accessories}"></option>
 				</select>
  		        
-		        <input type="submit" value="Add" />
+		        <input type="submit" th:value="#{add.add}" value="Add" />
 		    </form>
     	</div>
     	</div>
