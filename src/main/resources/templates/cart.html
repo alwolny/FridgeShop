@@ -3,7 +3,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<link rel="stylesheet"
 			href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
-		<title>Produkty</title>
+		<title th:text="#{cart.title}"></title>
 	</head>
 	<body>
 		<div class="container">
@@ -16,12 +16,12 @@
 								<div class="panel-title">
 									<div class="row">
 										<div class="col-xs-6">
-											<h5><span class="glyphicon glyphicon-shopping-cart"></span> Produkty w Twoim koszyku</h5>
+											<h5 th:text="#{cart.description}"><span class="glyphicon glyphicon-shopping-cart"></span></h5>
 										</div>
 										<div class="col-xs-6">
 											<a th:href="@{/}">
-											<button type="button" class="btn btn-primary btn-sm btn-block">
-												<span class="glyphicon glyphicon-share-alt"></span> Kontynuuj zakupy
+											<button type="button" class="btn btn-primary btn-sm btn-block" th:text="#{cart.continue}">
+												<span class="glyphicon glyphicon-share-alt"></span>
 											</button>
 											</a>
 										</div>
@@ -35,7 +35,7 @@
 									</div>
 									<div class="col-xs-4">
 										<a th:href="@{'/deleteItem?id=' + ${item.id}}">
-											<h4 class="product-name"><strong th:text="${item.product.name}"></strong></h4><h4><small>Product description</small></h4>
+											<h4 class="product-name"><strong th:text="${item.product.name}"></strong></h4><h4><small th:text="#{cart.total}"></small></h4>
 										</a>
 									</div>
 									<div class="col-xs-6">
@@ -62,12 +62,12 @@
 							<div class="panel-footer">
 								<div class="row text-center">
 									<div class="col-xs-9">
-										<h4 class="text-right" >Suma <strong th:text="${total}"></strong></h4>
+										<h4 class="text-right" th:text="#{cart.total}"><strong th:text="${total}"></strong></h4>
 									</div>
 									<div class="col-xs-3">
 										<a th:href="@{/order}">
-											<button type="button" class="btn btn-success btn-block">
-												Zamów
+											<button type="button" class="btn btn-success btn-block" th:text="#{cart.order}">
+												
 											</button>
 										</a>
 									</div>

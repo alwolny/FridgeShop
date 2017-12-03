@@ -10,12 +10,13 @@
 		<div class="container">
 	       	<div th:include="fragments/header::head"></div>	
 			<div class="container">
+			<div class="text-center">
 				<div class="row">
 					<div class="col-md-5">
 						<p>
 							<span sec:authorize="hasRole('ROLE_ADMIN')">
-								<a th:href="@{'/products/delete?id=' + ${product.productId}}" class="btn btn-danger">
-									<span class="glyphicon glyphicon-trash"></span> Usuń
+								<a th:href="@{'/products/delete?id=' + ${product.productId}}" class="btn btn-danger" th:text="#{product.delete}">
+									<span class="glyphicon glyphicon-trash"></span>
 								</a>
 							</span>
 						</p>
@@ -37,32 +38,33 @@
 						</span>
 						<p th:text="${product.description}"></p>
 						<p>
-							<strong>Kod produktu: </strong><span class="label label-warning" th:text="${product.productId}"></span>
+							<strong th:text="#{product.id}"></strong><span class="label label-warning" th:text="${product.productId}"></span>
 						</p>
 						<p>
-							<strong>Producent:</strong><span th:text="${product.manufacturer}"></span>
+							<strong th:text="#{product.producer}"></strong><span th:text="${product.manufacturer}"></span>
 						</p>
 						<p>
-							<strong>Kategoria: </strong> <span th:text="${product.category}"></span>
+							<strong th:text="#{product.category}"></strong> <span th:text="${product.category}"></span>
 						</p>
 						<p>
-							<strong>Liczba sztuk w magazynie: </strong><span th:text="${product.unitsInStock}"></span>
+							<strong th:text="#{product.stockunits}"></strong><span th:text="${product.unitsInStock}"></span>
 						</p>
 						<h4> <span th:text="${product.unitPrice}"></span> PLN</h4>
 						<p>
 							<span th:if="${product.unitsInStock != 0}">
 								<span sec:authorize="!hasRole('ROLE_ADMIN')">
-									<a th:href="@{'/addToCart?name=' + ${product.name}}" class="btn btn-warning btn-large"> 
-									<span class="glyphicon-shopping-cart glyphicon"></span> Zamów teraz
+									<a th:href="@{'/addToCart?name=' + ${product.name}}" class="btn btn-warning btn-large" th:text="#{product.ordernow}"> 
+									<span class="glyphicon-shopping-cart glyphicon"></span>
 									</a> 
 								</span>
-								<a th:href="@{/products}" class="btn btn-default">
-									<span class="glyphicon-hand-left glyphicon"></span> Powrót
+								<a th:href="@{/products}" class="btn btn-default" th:text="#{product.continue}">
+									<span class="glyphicon-hand-left glyphicon"></span>
 								</a>
 							</span>
 						</p>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 	</body>

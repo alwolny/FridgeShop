@@ -3,11 +3,12 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<link rel="stylesheet"
 			href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
-		<title>Produkty</title>
+		<title th:text="#{product.title}"></title>
 	</head>
 	<body>
 		<div class="container">
 	       	<div th:include="fragments/header::head"></div>
+	       	
 <!-- 				<ul class="nav nav-tabs">
 				 <li class="active"><a th:href="@{/products}" data-toggle="tab">Wszystkie produkty</a></li>
 				 <li><a th:href="@{/products/fridge}" data-toggle="tab">Lodówka</a></li>
@@ -19,7 +20,7 @@
 			<section>
 				<div class="container">
 					<div class="page-header">
-						<h1>Produkty <small>Wszystkie produkty dostępne w naszym sklepie</small></h1>
+						<h1 th:text="#{product.message}"><small></small></h1>
 					</div>
 				</div>
 			</section>
@@ -47,10 +48,10 @@
 									<div class="caption">
 										<h3><span th:text="${product.name}"></span></h3>
 										<p><span th:text="${product.unitPrice}"></span> PLN</p>
-										<p>Liczba sztuk w magazynie: <span th:text="${product.unitsInStock}"></span></p>
+										<p> <span th:text="#{product.stockunits}"></span><span th:text="${product.unitsInStock}"></span></p>
 										<p>
-											<a th:href="@{'/products/product?name=' + ${product.name}}" class="btn btn-primary">
-												<span class="glyphicon-info-sign glyphicon"></span> Szczegóły
+											<a th:href="@{'/products/product?name=' + ${product.name}}" class="btn btn-primary" th:text="#{product.details}">
+												<span class="glyphicon-info-sign glyphicon"></span>
 											</a>
 										</p>
 									</div>

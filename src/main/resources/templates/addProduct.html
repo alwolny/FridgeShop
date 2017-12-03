@@ -4,7 +4,7 @@
 <meta charset="UTF-8"></meta>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
-<title>Dodawanie produktu</title>
+<title th:text="#{add.product.title}"></title>
 </head>
 <body>
 	<div class="container">
@@ -12,7 +12,7 @@
 
 			<div class="container">
 
-		    <h1>Adding a product</h1>
+		    <h1 th:text="#{add.product.message}"></h1>
 		    <form  method="post" action="upload" th:action="@{/products/add}" th:object="${product}" enctype="multipart/form-data">
 		        <input th:field="*{name}" placeholder="Name" /><br />
 		        <input th:field="*{unitPrice}" placeholder="Price" /><br />
@@ -22,11 +22,11 @@
 		        <input th:field="*{unitsInOrder}" placeholder="Units in order" /><br />
 		        <input th:field="*{brand}" placeholder="Brand" /><br />
 				<select th:field="*{category}" class="selectpicker" data-style="btn-primary">
-				  <option th:value="fridge">Lodówka</option>
-				  <option th:value="refrigerator">Zamrażarka</option>
-				  <option th:value="coolerbox">Lodówka turystyczna</option>
-				  <option th:value="cabinet">Lady i wytryny chłodnicze</option>
-				  <option th:value="accessory">Akcesoria do lodówek</option>
+				  <option th:value="fridge" th:text="#{fridge}"></option>
+				  <option th:value="refrigerator" th:text="#{refrigerator}"></option>
+				  <option th:value="coolerbox" th:text="#{coolerbox}"></option>
+				  <option th:value="cabinet" th:text="#{cabinet}"></option>
+				  <option th:value="accessory" th:text="#{accessories}"></option>
 				</select>
  		        
 		        <input type="submit" value="Add" />

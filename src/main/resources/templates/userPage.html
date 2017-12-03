@@ -4,7 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<link rel="stylesheet"
 			href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
-		<title>Konto użytkownika</title>
+		<title th:text="#{user.page.title}"></title>
 	</head>
 	<body>
 		<div class="container">
@@ -13,29 +13,29 @@
 					<div class="row">
 						<div class="col-md-5">
 							<p>
-								<a th:href="@{/deleteUser}" class="btn btn-danger">
+								<a th:href="@{/deleteUser}" class="btn btn-danger" th:text="#{user.page.delete}">
 									<span class="glyphicon glyphicon-trash"></span> Usuń konto
 								</a>
 							</p>
 							<p>
-								<a th:href="@{/changePass}" class="btn btn-info">
+								<a th:href="@{/changePass}" class="btn btn-info" th:text="#{user.page.change}">
 									<span class="glyphicon glyphicon-trash"></span> Zmień hasło
 								</a>
 							</p>
-							<h3 >Dane użytkownika</h3>
+							<h3 th:text="#{user.page.details}"></h3>
 
 							<p>
-								<strong>Imię: </strong><span class="label label-warning" th:text="${user.firstName}"></span>
+								<strong th:text="#{user.page.firstname}">Imię: </strong><span class="label label-warning" th:text="${user.firstName}"></span>
 							</p>
 							<p>
-								<strong>Nazwisko: </strong><span th:text="${user.lastName}"></span>
+								<strong th:text="#{user.page.lastname}">Nazwisko: </strong><span th:text="${user.lastName}"></span>
 							</p>
 							<p>
-								<strong>Email: <span th:text="${user.email}"></span></strong>
+								<strong th:text="#{user.page.email}">Email: <span th:text="${user.email}"></span></strong>
 							</p>
 
 							<p>
-								<a th:href="@{/products}" class="btn btn-default">
+								<a th:href="@{/products}" class="btn btn-default" th:text="#{user.page.continue}">
 									<span class="glyphicon-hand-left glyphicon"></span> Powrót
 								</a>
 							</p>

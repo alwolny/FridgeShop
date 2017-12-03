@@ -3,13 +3,13 @@
 	<head>
 		<meta charset="UTF-8"></meta>
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></link>
-		<title>Registration form</title>
+		<title th:text="#{registration.form.title}"></title>
 	</head>
 	<body>
 		<div class="container">
 			<div th:include="fragments/header::head"></div>
 				<div class="container">
-			    <h1>Registration form</h1>
+			    <h1 th:text="#{registration.form.title}"></h1>
 			    <form action="#" method="post" th:action="@{/register}" th:object="${user}">
 			        <input th:field="*{firstName}" placeholder="First Name" /><br />
 			        <input th:field="*{lastName}" placeholder="Last Name" /><br />
