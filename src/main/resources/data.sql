@@ -7,8 +7,8 @@ insert into shop.users_roles(user_user_id, roles_id) VALUES (-1, 2);
 insert into shop.users_roles(user_user_id, roles_id) VALUES (-2, 1);
 
 
- insert into shop.products (units_in_order, units_in_stock, brand, category, discontinued, image, manufacturer, name, prod_condition, unit_price) values (0, 200, 'Samsung', 'fridge', false, null, 'Samsung', 'Samsung RB33 J3205', null, 1900);
- insert into shop.products (units_in_order, units_in_stock, brand, category, discontinued, image, manufacturer, name, prod_condition, unit_price) values (0, 200, 'Liebherr', 'cabinet', false, null, 'LIEBHERR', 'Liebherr WTes 5872', null, 890);
- insert into shop.products (units_in_order, units_in_stock, brand, category, discontinued, image, manufacturer, name, prod_condition, unit_price) values (0, 200, 'Campignaz', 'coolerbox', false, null, 'CAMPINGAZ', 'Campignaz Icetime Plus', null, 1200);
- insert into shop.products (units_in_order, units_in_stock, brand, category, discontinued, image, manufacturer, name, prod_condition, unit_price) values (0, 200, 'Beko', 'refrigerator', false, null, 'Beko', 'Beko HSA 29520', null, 1099);
- insert into shop.products (units_in_order, units_in_stock, brand, category, discontinued, image, manufacturer, name, prod_condition, unit_price) values (0, 200, 'Samsung', 'accessory', false, null, 'Samsung', 'Filtr do wody 1 szt.', null, 35);
+ insert into shop.products (units_in_order, units_in_stock, brand, category, discontinued, image, manufacturer, name, prod_condition, unit_price) values (0, 200, 'Samsung', 'fridge', false, null, 'Samsung', 'Samsung RB33', null, 1900);
+ insert into shop.products (units_in_order, units_in_stock, brand, category, discontinued, image, manufacturer, name, prod_condition, unit_price) values (0, 200, 'Liebherr', 'cabinet', false, null, 'LIEBHERR', 'Liebherr W2', null, 890);
+ insert into shop.products (units_in_order, units_in_stock, brand, category, discontinued, image, manufacturer, name, prod_condition, unit_price) values (0, 200, 'Campignaz', 'coolerbox', false, null, 'CAMPINGAZ', 'Campignaz Icetime', null, 1200);
+ insert into shop.products (units_in_order, units_in_stock, brand, category, discontinued, image, manufacturer, name, prod_condition, unit_price) values (0, 200, 'Beko', 'refrigerator', false, null, 'Beko', 'Beko HSA295', null, 1099);
+ insert into shop.products (units_in_order, units_in_stock, brand, category, discontinued, image, manufacturer, name, prod_condition, unit_price) values (0, 200, 'Samsung', 'accessory', false, null, 'Samsung', 'Filtr do wody', null, 35);
