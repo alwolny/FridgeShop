@@ -14,29 +14,29 @@
 						<div class="col-md-5">
 							<p>
 								<a th:href="@{/deleteUser}" class="btn btn-danger" th:text="#{user.page.delete}">
-									<span class="glyphicon glyphicon-trash"></span> Usuń konto
+									<span class="glyphicon glyphicon-trash"></span>
 								</a>
 							</p>
 							<p>
 								<a th:href="@{/changePass}" class="btn btn-info" th:text="#{user.page.change}">
-									<span class="glyphicon glyphicon-trash"></span> Zmień hasło
+									<span class="glyphicon glyphicon-trash"></span>
 								</a>
 							</p>
 							<h3 th:text="#{user.page.details}"></h3>
 
 							<p>
-								<strong th:text="#{user.page.firstname}">Imię: </strong><span class="label label-warning" th:text="${user.firstName}"></span>
+								<strong th:text="#{user.page.firstname}"></strong><span th:text="${user.firstName}"></span>
 							</p>
 							<p>
-								<strong th:text="#{user.page.lastname}">Nazwisko: </strong><span th:text="${user.lastName}"></span>
+								<strong th:text="#{user.page.lastname}"></strong><span th:text="${user.lastName}"></span>
 							</p>
 							<p>
-								<strong th:text="#{user.page.email}">Email: <span th:text="${user.email}"></span></strong>
+								<strong th:text="#{user.page.email}"><span th:text="${user.email}"></span></strong>
 							</p>
 
 							<p>
 								<a th:href="@{/products}" class="btn btn-default" th:text="#{user.page.continue}">
-									<span class="glyphicon-hand-left glyphicon"></span> Powrót
+									<span class="glyphicon-hand-left glyphicon"></span>
 								</a>
 							</p>
 						</div>
